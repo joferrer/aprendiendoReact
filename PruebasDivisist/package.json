@@ -1,0 +1,17 @@
+{
+  "name": "pruebasdivisist",
+  "version": "1.0.0",
+  "description": "",
+  "main": "materas.js",
+  "scripts": {
+    "dev": "NODE_TLS_REJECT_UNAUTHORIZED=0 node materas",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^20.0.0",
+    "node": "^18.5.0",
+    "node-fetch": "^3.2.6"
+  }
+}

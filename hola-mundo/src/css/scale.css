@@ -1,0 +1,11 @@
+
+.scale{
+    display: inline;
+    font-size: 70px;
+    transition: font-size 1s;
+    
+}
+.scale:hover{
+    font-size: 100px;
+    color: aqua;
+}

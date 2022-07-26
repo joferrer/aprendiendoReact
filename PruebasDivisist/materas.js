@@ -3,7 +3,7 @@ const fs  = require ('fs');
 const https =  require('https');
 const jsdom = require("jsdom");
 const { JSDOM } = jsdom;
-
+const {generarJsonProfesores} = require('./profesores');
 
 const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
@@ -52,13 +52,14 @@ const materias = async()=>{
         console.log(mate);
         listaMaterias.push(mate);
         
-    }
-    
-
-
-  
+    }  
     return listaMaterias;
 };
+
+
+
+
+
 const generarJson = async(nombreJson = "none.json")=>{ 
     const pensum = await materias();
     
@@ -86,4 +87,10 @@ const generarJson = async(nombreJson = "none.json")=>{
 
 }; 
 console.log("MATE :" +materias())
-generarJson("ing_agronomica_pensum.json")
+//generarJson("ing_agronomica_pensum.json")
+
+const obtenerProfesores = async() =>{
+    fs.
+};
+
+obtenerProfesores();

@@ -1,4 +1,4 @@
-import './css/scale.css'
+//import './css/scale.css'
 import PropTypes from 'prop-types';
 
 const items = () => ['J', 'E','I','S','O','N'];

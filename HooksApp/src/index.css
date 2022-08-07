@@ -1,7 +1,16 @@
-body{
+body {
   padding: 20px;
 }
 
-button{
+button {
   margin-right: 10px;
+}
+
+a {
+  margin-right: 5px;
+}
+
+#navbarNav{
+  display: flex;
+  flex-direction: column;
 }

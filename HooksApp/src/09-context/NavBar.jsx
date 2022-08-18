@@ -1,7 +1,11 @@
+
 import { Link, NavLink } from 'react-router-dom';
 
 
 export const NavBar = () => {
+
+    
+
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark rounded-3">
         <div className="container-fluid">
@@ -28,6 +32,13 @@ export const NavBar = () => {
                         className={ ({ isActive }) => `nav-link ${ isActive ? 'active' : '' }`}
                         to="/Login">
                         Login
+                    </NavLink>
+
+                    <NavLink 
+                        className={ ({isActive}) => `nav-item nav-link  ${ isActive ? 'active':'' }` }
+                        to="/search"
+                    >
+                        Search
                     </NavLink>
                 </ul>
             </div>

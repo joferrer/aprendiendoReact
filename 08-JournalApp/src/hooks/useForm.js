@@ -13,7 +13,7 @@ export const useForm = ( initialForm = {} , formValidations = {}) => {
     }, [formState])
 
     const isFormValid = useMemo(()=>{
-        console.log(formValidation);
+        
         for (const formValue of Object.keys( formValidation )) {
             if( formValidation[formValue] !== null) return false;
 

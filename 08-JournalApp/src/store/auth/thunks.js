@@ -1,5 +1,6 @@
+import { async } from "@firebase/util";
 import { Co2Sharp } from "@mui/icons-material";
-import { singInWithGoogle } from "../../firebase/provider";
+import { registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/provider";
 import { checkingCredentials, logout, login } from "./"
 
 
@@ -20,4 +21,17 @@ export const startGoogleSingIn = ( email, password) =>{
 
         
     }
+}
+
+export const startCreatingUserWithEmailPassword = ({email, password, displayName})=>{
+    return async (dispatch)=>{
+        dispatch(checkingCredentials());
+
+        const {ok,uid, photoURL, errorMessage} = await registerUserWithEmailPassword({email, password, displayName});
+
+        if(!ok) return dispatch(logout({errorMessage}));
+
+        dispatch(login({uid, displayName, email, photoURL}));
+    }
+
 }

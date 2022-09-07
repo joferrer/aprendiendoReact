@@ -1,6 +1,6 @@
 import { async } from "@firebase/util";
 import { Co2Sharp } from "@mui/icons-material";
-import { loginWithEmailPassword, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/provider";
+import { loginWithEmailPassword, logoutFireBase, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/provider";
 import { checkingCredentials, logout, login } from "./"
 
 
@@ -45,5 +45,12 @@ export const startLoginWithEmailPassword = ({email, password})=>{
         if(!ok) return dispatch(logout({errorMessage}));
 
         dispatch(login({uid, displayName,email,photoURL}));
+    }
+}
+
+export const startLogout = ()=>{
+    return async(dispatch) =>{
+        await logoutFireBase();
+        dispatch(logout());
     }
 }

@@ -1,6 +1,6 @@
 import { async } from "@firebase/util";
 import { Co2Sharp } from "@mui/icons-material";
-import { registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/provider";
+import { loginWithEmailPassword, registerUserWithEmailPassword, singInWithGoogle } from "../../firebase/provider";
 import { checkingCredentials, logout, login } from "./"
 
 
@@ -34,4 +34,16 @@ export const startCreatingUserWithEmailPassword = ({email, password, displayName
         dispatch(login({uid, displayName, email, photoURL}));
     }
 
+}
+
+export const startLoginWithEmailPassword = ({email, password})=>{
+ 
+    return async(dispatch) =>{
+        dispatch(checkingAuthentication());
+        const {ok,uid,displayName, photoURL, errorMessage} = await loginWithEmailPassword({email, password});
+
+        if(!ok) return dispatch(logout({errorMessage}));
+
+        dispatch(login({uid, displayName,email,photoURL}));
+    }
 }

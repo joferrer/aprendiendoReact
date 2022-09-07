@@ -1,4 +1,5 @@
-import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, updateProfile } from 'firebase/auth';
+import { async } from '@firebase/util';
+import { createUserWithEmailAndPassword, GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
 import { connectFirestoreEmulator } from 'firebase/firestore/lite';
 import { FireBaseAuth } from './config';
 
@@ -52,10 +53,38 @@ export const registerUserWithEmailPassword = async ({email,password,displayName}
        }
 
     } catch (error) {
-        
+        let errorMessage = error.message;
+        if( error.message === 'Firebase: Error (auth/email-already-in-use).')
+            errorMessage = 'Ese correo ya esta registrado.'
+
         return {
             ok: false,
-            errorMessage: error.message
+            errorMessage
+        }
+    }
+
+}
+
+export const loginWithEmailPassword = async({email, password})=>{
+
+    try {
+        const resp = await signInWithEmailAndPassword(FireBaseAuth, email, password);
+        console.log(resp);
+        const {displayName, photoURL, uid } = resp.user;
+
+        return {
+            ok: true,
+            uid,
+            displayName,
+            email,
+            photoURL
+        }
+        
+    } catch (error) {
+        const errorMessage = 'Su correo o contraseña es incorrecto.';
+        return {
+            ok: false,
+            errorMessage
         }
     }
 
